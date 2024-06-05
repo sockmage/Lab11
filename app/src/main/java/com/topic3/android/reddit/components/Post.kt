@@ -60,7 +60,10 @@ fun Post(post: PostModel, content: @Composable () -> Unit = {}) {
 }
 
 @Composable
-fun Header(post: PostModel) {
+fun Header(
+    post: PostModel,
+    onJoinButtonClick: (Boolean) -> Unit = {}
+    ) {
     Row(modifier = Modifier.padding(start = 16.dp)) {
         Image(
             ImageBitmap.imageResource(id = R.drawable.subreddit_placeholder),
@@ -81,6 +84,8 @@ fun Header(post: PostModel) {
                 color = Color.Gray
             )
         }
+        Spacer(modifier = Modifier.width(4.dp))
+        JoinButton(onJoinButtonClick)
         MoreActionsMenu()
     }
     Title(text = post.title)
